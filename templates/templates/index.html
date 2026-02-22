@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aziz's Flipbook Maker</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/page-flip@2.0.7/dist/js/page-flip.browser.min.js"></script>
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #0f172a;
+            --card: #1e293b;
+        }
+
+        body { 
+            background-color: var(--bg); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .header { padding: 40px; text-align: center; }
+        
+        .upload-container {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px dashed #334155;
+            margin-bottom: 40px;
+            transition: 0.3s;
+        }
+
+        .upload-container:hover { border-color: var(--primary); }
+
+        input[type="file"] { margin-right: 10px; }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* Flipbook styling */
+        #flipbook-wrapper {
+            display: none; /* Hidden until PDF is loaded */
+            margin-bottom: 50px;
+        }
+
+        #flipbook {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-canvas { background: white; }
+
+        #status-message { color: var(--primary); margin-bottom: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Flipbook Maker</h1>
+        <p>Upload a PDF to see the magic happen</p>
+    </div>
+
+    <div class="upload-container">
+        <form action="/upload" method="post" enctype
